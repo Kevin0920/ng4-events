@@ -1,0 +1,29 @@
+body {
+    background: url(/assets/images/pexels-photo-164642.jpeg);
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment:fixed;
+    height: 1000px;
+    opacity: 0.9;
+  }
+
+.text-info {
+    background-color: #222;
+}
+
+#card-header {
+    background-color: #222;
+}
+
+#scrollbar {
+  overflow-y: scroll;
+  
+}
+
+table {
+  font-size: 25px;
+  background-color: #2222;
+}
