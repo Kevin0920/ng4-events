@@ -67,8 +67,8 @@ export class MainService {
     )
   }
 
-  createComment(comments, callback) {
-    this._http.post('/comments/user/' + this.user._id, comments).subscribe(
+  createComment(event_id, comments, callback) {
+    this._http.post('/comments/user/' + event_id + "/" + this.user._id, comments).subscribe(
       (res)=>{
         console.log(comments);
         callback(res.json());
@@ -95,6 +95,16 @@ export class MainService {
   getOneEvent(event_id, callback) {
     this._http.get('/oneEvent/' + event_id).subscribe(
       (res) => {
+        callback(res.json());
+      }
+    )
+  }
+
+  // Get one comment
+  retrieveComment(comment_id, callback) {
+    this._http.get('/oneComment/' + comment_id).subscribe(
+      (res) => {
+        console.log(res);
         callback(res.json());
       }
     )

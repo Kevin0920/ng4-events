@@ -17,10 +17,9 @@ export class ShowComponent implements OnInit {
   };
 
   comments = {
-    content:"",
-    message_poster:""
+    content:""
   }
-
+  comment;
 
   constructor(private _service: MainService, private _router: Router, private _route: ActivatedRoute) { }
 
@@ -28,20 +27,28 @@ export class ShowComponent implements OnInit {
     this.user = this._service.user;
     console.log(this.user);
     this._route.paramMap.subscribe(params => {
-      this._service.getOneEvent(params.get("id"), (res)=> {
+      this._service.getOneEvent(params.get("id"), (res) => {
         console.log("get one event detail ts", res);
         this.event = res;
+      })
+    })
+    this._route.paramMap.subscribe(params => {
+      this._service.retrieveComment(params.get("id"), (res) => {
+        console.log("f-d comment ts", res);
+        this.comment = res;
       })
     })
   }
 
   createComment() {
-    this._service.createComment(this.comments, (res) => {
+    this._route.paramMap.subscribe(parmas => {
+      this._service.createComment(parmas.get("id"),this.comments, (res) => {
+        console.log(res);
+      })
+      this.comments = {
+        content: ""
+      }
     })
-    this.comments = {
-      content: "",
-      message_poster: ""
-    }
   }
 
   logout() {

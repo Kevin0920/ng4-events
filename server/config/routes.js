@@ -15,6 +15,10 @@ module.exports = function(app){
       mainroutes.createEvent(req, res);
     })
 
+    app.post('/comments/user/:event_id/:id', function(req, res) {
+      mainroutes.createComment(req, res);
+    })
+
     app.put('/user/edit/:id', (req, res, next)=>{
       mainroutes.update(req, res);
     })
@@ -33,6 +37,10 @@ module.exports = function(app){
 
     app.get('/oneEvent/:id', function(req, res) {
       mainroutes.getOneEvent(req, res);
+    })
+
+    app.get('/oneComment/:id', function(req, res) {
+      mainroutes.getComment(req, res);
     })
 
     app.delete('/events/:id', (req, res) => {

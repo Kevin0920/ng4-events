@@ -59,18 +59,29 @@
 
   <div class="container">
     <h2><i class="fa fa-comments" aria-hidden="true"></i> Discussion about this event:</h2>
-    <div class="form-group" id="scrollbar">
-
+    <div class="form-group" ngFor="let c of comments" id="scrollbar">
+      <h1>jljlkjlkj</h1>
+      <h1>jljljkj</h1>
+      <h1>sjdlfjsjk</h1>
     </div>
     <form (submit)="createComment()" #formData="ngForm">
       <h3>Add Comment</h3>
       <div class="form-group">
         <div class="row">
           <div class="col-sm-6">
-              <textarea class="form-control custom-control" rows="10" style="resize:none"></textarea>     
+              <textarea class="form-control custom-control" rows="10" style="resize:none" name="content"
+              [(ngModel)]="comments.content"
+              placeholder="Add a comment...."
+              required minlength="3"
+              #makeComment="ngModel"></textarea>     
           </div>
         </div>
       </div>
+      <div class="alert alert-danger" *ngIf="makeComment.invalid && (makeComment.dirty || makeComment.touched)">
+          <strong>
+            Please post somethingkevin !!!
+          </strong>
+        </div>
       <button class="btn btn-primary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
         Submit Comments</button>
     </form>

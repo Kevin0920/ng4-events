@@ -20,6 +20,7 @@ var EventSchema = new mongoose.Schema({
     price: Number,
     location: { type: String, required: true },
     _host: { type: Schema.Types.ObjectId, ref: "User" },
+    _comment: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     users: [ {type: mongoose.Schema.ObjectId, ref: 'User'} ],
     _join_user: [ {type: mongoose.Schema.ObjectId, ref: 'User'} ],
     _unjoin_user: [ {type: mongoose.Schema.ObjectId, ref: "User"} ],
@@ -29,8 +30,10 @@ var EventSchema = new mongoose.Schema({
 var Event = mongoose.model('Event', EventSchema);
 
 var CommentSchema = new mongoose.Schema({
-    contents: { type: String, required:true },
-    message_poster: [ {type: mongoose.Schema.ObjectId, ref: "User"} ],
+    content: { type: String, required:true },
+    _event: { type: mongoose.Schema.ObjectId, ref: "Event"},
+    // other message poster 
+    _message_poster: {type: mongoose.Schema.ObjectId, ref: "User"} ,
     
 }, {timestamps: true});
 

@@ -13,21 +13,6 @@ import { ShowComponent } from './show/show.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 
 
-// import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
-// import { FacebookLoginProvider } from "angular4-social-login";
-
-
-// let config = new AuthServiceConfig([
-//   {
-//     id: FacebookLoginProvider.PROVIDER_ID,
-//     provider: new FacebookLoginProvider("479236462477287")
-//   }
-// ]);
-
-// export function provideConfig() {
-//   return config;
-// }
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,12 +27,8 @@ import { EditEventComponent } from './edit-event/edit-event.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    // SocialLoginModule
   ],
-  providers: [ MainService
-      // provide: AuthServiceConfig,
-      // useFactory: provideConfig
-  ],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
