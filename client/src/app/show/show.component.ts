@@ -30,20 +30,24 @@ export class ShowComponent implements OnInit {
       this._service.getOneEvent(params.get("id"), (res) => {
         console.log("get one event detail ts", res);
         this.event = res;
+        console.log(this.event);
       })
     })
-    this._route.paramMap.subscribe(params => {
-      this._service.retrieveComment(params.get("id"), (res) => {
-        console.log("f-d comment ts", res);
-        this.comment = res;
-      })
-    })
+  
   }
 
+  // When create an comment, same time retreive the comment will update same time  
   createComment() {
     this._route.paramMap.subscribe(parmas => {
       this._service.createComment(parmas.get("id"),this.comments, (res) => {
         console.log(res);
+        this._route.paramMap.subscribe(params => {
+          this._service.getOneEvent(params.get("id"), (res) => {
+            console.log("get one event detail ts", res);
+            this.event = res;
+            console.log(this.event);
+          })
+        })
       })
       this.comments = {
         content: ""

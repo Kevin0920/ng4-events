@@ -40,7 +40,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Name</th>
+          <th scope="col"><i class="fa fa-user" aria-hidden="true"></i>Name</th>
           <th scope="col">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
               Location</th>
@@ -59,10 +59,9 @@
 
   <div class="container">
     <h2><i class="fa fa-comments" aria-hidden="true"></i> Discussion about this event:</h2>
-    <div class="form-group" ngFor="let c of comments" id="scrollbar">
-      <h1>jljlkjlkj</h1>
-      <h1>jljljkj</h1>
-      <h1>sjdlfjsjk</h1>
+    <div class="form-group" *ngFor="let e of event._comment" id="scrollbar">
+      <h1>{{ e._message_poster.first_name }}</h1>
+      <h3>{{ e.content }}</h3>
     </div>
     <form (submit)="createComment()" #formData="ngForm">
       <h3>Add Comment</h3>
@@ -79,7 +78,7 @@
       </div>
       <div class="alert alert-danger" *ngIf="makeComment.invalid && (makeComment.dirty || makeComment.touched)">
           <strong>
-            Please post somethingkevin !!!
+            Please post something {{user?.first_name}} !!!
           </strong>
         </div>
       <button class="btn btn-primary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>

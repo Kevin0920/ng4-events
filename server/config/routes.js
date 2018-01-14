@@ -27,7 +27,7 @@ module.exports = function(app){
       mainroutes.join(req, res);
     })
 
-    app.post('/cancle/:event_id/:user_id', (req, res, next)=> {
+    app.post('/cancel/:event_id/:user_id', (req, res, next)=> {
       mainroutes.cancelEvent(req, res);
     })
 
@@ -48,7 +48,7 @@ module.exports = function(app){
     })
 
     app.all("*",function(req,res){
-		res.sendFile('index.html', { root: './client/dist' });
+  		res.sendFile('index.html', { root: './client/dist' });
 	})
 
  }

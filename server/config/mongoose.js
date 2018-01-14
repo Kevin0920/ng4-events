@@ -3,7 +3,7 @@ var path = require('path');
 
 var fs = require('fs');
 
-mongoose.connect('mongodb://localhost/make-event');
+mongoose.connect('mongodb://localhost/book-event');
 
 var models_path = path.join(__dirname, './../models');
 // var uristring =

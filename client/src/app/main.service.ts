@@ -124,7 +124,7 @@ export class MainService {
 
   cancel(event_id, callback) {
     console.log(event_id);
-    this._http.post('/cancle/' + event_id + '/' + this.user._id, {}).subscribe(
+    this._http.post('/cancel/' + event_id + '/' + this.user._id, {}).subscribe(
       (res) => {
         console.log(this.user._id);
         console.log("cancel join event service",res);

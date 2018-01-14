@@ -181,7 +181,7 @@ module.exports = {
   getOneEvent: function (req, res) {
     Event.findOne({
       _id: req.params.id
-    }).populate("_host").populate("_join_user").exec(function (err, event) {
+    }).populate("_host").populate("_join_user").populate({path: "_comment", populate: {path:"_message_poster"}}).exec(function (err, event) {
       if (err) {
         console.log("b-e one event detail");
       } else {
@@ -191,9 +191,9 @@ module.exports = {
   },
 
   getComment: function (req, res) {
-    Comment.findOne({
+     Event.findOne({
       _id: req.params.id
-    }).populate({path: "_event", populate: {path: "_message_poster"}}).exec(function(err, comment) {
+    }).populate({path: "_comment", populate: {path: "_message_poster"}}).exec(function(err, comment) {
       if (err) {
         console.log("b-e comment", err);
       }
